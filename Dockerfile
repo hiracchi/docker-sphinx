@@ -16,6 +16,7 @@ ARG WORKDIR="/work"
 RUN set -x \
   && apt-get update \
   && apt-get install -y \
+     make \
      python3-sphinx \
      python3-sphinx-autorun \
      python3-sphinx-paramlinks \
@@ -33,7 +34,7 @@ RUN set -x \
      fonts-mathjax fonts-mathjax-extras \
      texlive texlive-lang-japanese texlive-lang-cjk texlive-fonts-recommended texlive-fonts-extra \
      xdvik-ja gv \
-     gv nkf gnuplot tgif gimp inkscape mimetex latexdiff \
+     gv nkf gnuplot tgif gimp inkscape mimetex latexdiff latexmk \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -43,7 +44,9 @@ RUN set -x \
 # -----------------------------------------------------------------------------
 # entrypoint
 # -----------------------------------------------------------------------------
+COPY docker-entrypoint.sh /
+
 WORKDIR "${WORKDIR}"
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["make"]
+#CMD ["make"]
 #CMD ["/usr/bin/tail", "-f", "/dev/null"]

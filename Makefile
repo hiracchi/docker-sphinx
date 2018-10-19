@@ -15,7 +15,7 @@ start:
 		--rm \
 		--name ${CONTAINER_NAME} \
 		-u $(USER_ID):$(GROUP_ID) \
-		--volume "${PWD}/work:/work" \
+		--volume "${PWD}:/work" \
 		"${PACKAGE}:${TAG}"
 	#sleep 4
 	docker ps -a
