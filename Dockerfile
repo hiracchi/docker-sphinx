@@ -5,7 +5,7 @@ ARG VCS_REF
 ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/hiracchi/docker-ubuntu-ja" \
+      org.label-schema.vcs-url="https://github.com/hiracchi/docker-sphinx" \
       org.label-schema.version=$VERSION \
       maintainer="Toshiyuki Hirano <hiracchi@gmail.com>"
 
@@ -44,9 +44,8 @@ RUN set -x \
 # -----------------------------------------------------------------------------
 # entrypoint
 # -----------------------------------------------------------------------------
-COPY docker-entrypoint.sh /
+COPY docker-entrypoint.sh usage.sh /
 
 WORKDIR "${WORKDIR}"
 ENTRYPOINT ["/docker-entrypoint.sh"]
-#CMD ["make"]
-#CMD ["/usr/bin/tail", "-f", "/dev/null"]
+CMD ["/usage.sh"]
