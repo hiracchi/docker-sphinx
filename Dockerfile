@@ -30,6 +30,8 @@ RUN set -x \
      python3-sphinx-bootstrap-theme \
      python3-sphinx-celery \
      python3-sphinx-rtd-theme \
+     python3-sphinx-bootstrap-theme \
+     sphinx-intl \
      libjs-mathjax \
      fonts-mathjax fonts-mathjax-extras \
      texlive texlive-lang-japanese texlive-lang-cjk texlive-fonts-recommended texlive-fonts-extra \
