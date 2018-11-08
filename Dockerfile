@@ -36,6 +36,7 @@ RUN set -x \
      fonts-mathjax fonts-mathjax-extras \
      texlive texlive-lang-japanese texlive-lang-cjk texlive-fonts-recommended texlive-fonts-extra \
      xdvik-ja gv \
+     dvipng \
      gv nkf gnuplot tgif gimp inkscape mimetex latexdiff latexmk \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
