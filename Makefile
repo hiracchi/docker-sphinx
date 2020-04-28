@@ -5,20 +5,20 @@ CONTAINER_NAME="sphinx"
 .PHONY: build start stop restart term logs
 
 build:
-	docker build -t "${PACKAGE}:${TAG}" .
+	docker build -t "${PACKAGE}:${TAG}" . 2>&1 | tee build.log
 
 
 start:
-	\$(eval USER_ID := $(shell id -u))
-	\$(eval GROUP_ID := $(shell id -g))
+	@\$(eval USER_ID := $(shell id -u))
+	@\$(eval GROUP_ID := $(shell id -g))
+	@echo "start docker as ${USER_ID}:${GROUP_ID}"
 	docker run -d \
 		--rm \
 		--name ${CONTAINER_NAME} \
 		-u $(USER_ID):$(GROUP_ID) \
-		--volume "${PWD}:/work" \
-		"${PACKAGE}:${TAG}"
-	#sleep 4
-	docker ps -a
+		--volume ${PWD}:/work \
+		"${PACKAGE}:${TAG}" ${ARG}
+
 
 stop:
 	docker rm -f ${CONTAINER_NAME}
@@ -28,13 +28,7 @@ restart: stop start
 
 
 term:
-	docker run -it \
-		--rm \
-		--name ${CONTAINER_NAME} \
-		-u $(USER_ID):$(GROUP_ID) \
-		--volume "${PWD}:/work" \
-		"${PACKAGE}:${TAG}" \
-		/bin/bash
+	docker exec -it ${CONTAINER_NAME} /bin/bash
 
 
 logs:
