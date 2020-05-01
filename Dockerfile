@@ -14,26 +14,30 @@ ARG WORKDIR="/work"
 ENV LC_ALL=C LANG=C DEBIAN_FRONTEND=noninteractive
 
 ENV PACKAGES="\
+  make \
   python3 python3-pip \
+  graphviz \
   libjs-mathjax \
   fonts-mathjax fonts-mathjax-extras \
-  python3-sphinx \
-  sphinx-intl \
-  python3-sphinx-celery \
-  python3-sphinx-autorun \
-  python3-sphinx-paramlinks \
-  python3-sphinxcontrib.bibtex \
-  python3-sphinxcontrib.blockdiag \
-  python3-sphinxcontrib.nwdiag \
-  python3-sphinxcontrib.seqdiag \
-  python3-sphinxcontrib.plantuml \
-  python3-sphinxcontrib.programoutput \
-  python3-sphinxcontrib.spelling \
-  python3-sphinx-bootstrap-theme \
-  python3-sphinx-rtd-theme \
   "
 
-# setup packages ===============================================================
+ENV PIP_PACKAGES="\
+  sphinx sphinx-intl \
+  commonmark recommonmark \
+  sphinx-autorun sphinx-paramlinks \
+  blockdiag sphinxcontrib-blockdiag sphinxcontrib-nwdiag sphinxcontrib-seqdiag \
+  sphinxcontrib-bibtex \
+  sphinxcontrib-plantuml \
+  sphinxcontrib-programoutput \
+  sphinxcontrib-spelling \
+  sphinx-theme sphinx-rtd-theme sphinx-bootstrap-theme \
+  sphinx_fontawesome \
+  sphinx-quickstart-plus \
+  "
+
+# -----------------------------------------------------------------------------
+# packages
+# -----------------------------------------------------------------------------
 RUN set -x && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
@@ -42,6 +46,12 @@ RUN set -x && \
   apt-get clean && \
   apt-get autoclean && \
   rm -rf /var/lib/apt/lists/* 
+
+# -----------------------------------------------------------------------------
+# pip
+# -----------------------------------------------------------------------------
+RUN set -x && \
+  pip3 install ${PIP_PACKAGES}
 
 # -----------------------------------------------------------------------------
 # entrypoint
