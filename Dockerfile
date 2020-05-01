@@ -31,10 +31,10 @@ ENV PIP_PACKAGES="\
   sphinxcontrib-programoutput \
   sphinxcontrib-spelling \
   sphinx-theme sphinx-rtd-theme sphinx-bootstrap-theme \
-  sphinx-quickstart-plus \
   "
 
 #   sphinx_fontawesome 
+#   sphinx-quickstart-plus
 
 # -----------------------------------------------------------------------------
 # packages
