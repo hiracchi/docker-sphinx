@@ -24,7 +24,7 @@ ENV PACKAGES="\
 ENV PIP_PACKAGES="\
   sphinx sphinx-intl \
   commonmark recommonmark \
-  sphinx-autorun sphinx-paramlinks \
+  sphinx-autorun sphinx-autobuild sphinx-paramlinks \
   blockdiag sphinxcontrib-blockdiag sphinxcontrib-nwdiag sphinxcontrib-seqdiag \
   sphinxcontrib-bibtex \
   sphinxcontrib-plantuml \
