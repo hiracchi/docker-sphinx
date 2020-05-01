@@ -15,7 +15,7 @@ ENV LC_ALL=C LANG=C DEBIAN_FRONTEND=noninteractive
 
 ENV PACKAGES="\
   make \
-  python3 python3-pip \
+  python3 python3-pip python3-setuptools \
   graphviz \
   libjs-mathjax \
   fonts-mathjax fonts-mathjax-extras \
